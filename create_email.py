@@ -10,7 +10,7 @@ from data_config import EMAIL
 from tools import is_path, file_name, get_mime_type
 
 
-def create(email_to: str, body: str, subject: str, subtype: str='plain',
+def create(email_to: str, body: str, subject: str, subtype: str,
            boundary_type: str=False) -> MIMEMultipart:
     """
     Essa função cria o email a ser enviado
@@ -43,10 +43,11 @@ def create(email_to: str, body: str, subject: str, subtype: str='plain',
 
 def attach_app(msg_app: MIMEMultipart, path_arq: str) -> MIMEMultipart:
     """ anexa arquivos binarios ao email """
+    _, subtype = get_mime_type(path_arq)
     try:
         with open(path_arq, 'rb') as file_attachment:
             app = file_attachment.read()
-        atta = MIMEApplication(app, 'octet-stream')
+        atta = MIMEApplication(app, subtype)
         atta['Content-Disposition'] = f"attachment; filename= {file_name(path_arq)}"
         msg_app.attach(atta)
         print(f'arquivo {file_name(path_arq)} anexado!')

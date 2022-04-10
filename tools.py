@@ -5,8 +5,8 @@ from mimetypes import guess_type
 
 def is_path(data: str) -> bool:
     """ essa função retorna True se a string passada corresponder a um path """
-    pattern = r'/*[\w\W]*/*[\w\W]*\.[a-z0-9]+'
-    result = fullmatch(pattern, data)
+    pattern1 = r'[a-zA-Z0-9-_]+\.[a-z0-9]+|[\.\~]*/[\w\W]*/[\w\W]*\.[a-z0-9]+'
+    result = fullmatch(pattern1, data)
     if result:
         return True
     return False
