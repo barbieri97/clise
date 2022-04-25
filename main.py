@@ -51,7 +51,7 @@ if __name__ == '__main__':
     params = dict(zip(argv[::2], argv[1::2]))
     if command == 'send':
         main(params)
-    elif command == 'setdata':
+    elif command == 'config':
         config(params)
     else:
         help_menu()

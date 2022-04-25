@@ -31,6 +31,7 @@ class TestCreateEMail(unittest.TestCase):
         self.assertEqual(str(msg_create), str(expected_msg))
 
     def teste_attach_app(self):
+        """ doc string """
         self.maxDiff = None
         with open('config.json', 'rb') as file:
             app = file.read()
